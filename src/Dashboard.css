@@ -1,0 +1,66 @@
+/* 3:2 전체 비율 강제 (컨테이너가 가로폭의 66.666% 높이를 유지) */
+.dashboard {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: #1b1d1f;
+  color: #f1f5f9;
+  padding: 1.2rem;
+  display: grid;
+  gap: 1.2rem;
+
+  /* 레이아웃 그리드 정의 */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.5fr 2fr 1.2fr;
+  grid-template-areas:
+    "kpi1 kpi2 kpi3 kpi4"
+    "scatter scatter criteria feature"
+    "yield  yield  downtime sensor";
+}
+
+/* ── KPI 박스 ───────────── */
+.kpi {
+  background: #263238;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.kpi-label  { font-size: 0.9rem; opacity: 0.7; }
+.kpi-value  { font-size: 1.8rem; font-weight: 700; }
+
+/* KPI 개별 영역 매핑 */
+.dashboard > :nth-child(1) { grid-area: kpi1; }
+.dashboard > :nth-child(2) { grid-area: kpi2; }
+.dashboard > :nth-child(3) { grid-area: kpi3; }
+.dashboard > :nth-child(4) { grid-area: kpi4; }
+
+/* ── 카드 공통 ───────────── */
+.card {
+  background: #263238;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+}
+
+.card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+/* 개별 영역 매핑 */
+.scatter  { grid-area: scatter; }
+.criteria { grid-area: criteria; display: flex; flex-direction: column; }
+.feature  { grid-area: feature;  }
+.yield    { grid-area: yield;    }
+.downtime { grid-area: downtime; } 
+.sensor   { grid-area: sensor;   }
+
+/* 리스트 스타일 */
+.criteria ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+}
